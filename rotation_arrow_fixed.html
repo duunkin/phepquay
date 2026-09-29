@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="vi"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260911-05-06910f9","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YAHO2-t-jNE,0","Arial":"YAGyDvJ_4Ts,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Canva Sans":"YAFLd8sKbwc,2","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAHO2VMiyZo,0","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAEul-FRQw4,0","Georgia":"YAGzXkO0pEM,0","Helvetica Neue":"YAFcf6CtJfI,0","Impact":"YAFcfnjI7Vk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YAHO2a5g66Q,0","JetBrains Mono":"YAFdJksXcAk,0","Libre Baskerville":"YACgEUFdPdA,0","Manrope":"YAHO2b2feC4,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YADLjI9qxTA,0","Nunito":"YACgEX8C5Gg,0","Oleo Script":"YACgEQQ14jI,0","Phantom Sans":"YAHO2E8Pb88,0","Playfair Display":"YACgEYmuCJE,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YADWjpfPmdk,0","Raleway":"YACgEVg3xZg,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Spectral":"YAHO2rVUHIM,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Ubuntu":"YACgERDU--Q,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YADlN8CFZ8Q,0","ui-sans-serif":"YACkoN-xg4g,0"}}');</script><script src="/_sdk/c21197326e9a1154.telemetry_sdk.js" integrity="sha512-Aqwl+NmLtKBcMQM4HY+W9lmBHa+zP5MqSEuYfCjkzt4xeOSv2xNz81cCp7JyXBVrY+zojg5o94FHY/R31v2d3Q=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHÒNG THÍ NGHIỆM PHÉP BIẾN HÌNH</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #18313a;
+      --muted: #64727a;
+      --paper: #f4f6f4;
+      --panel: #ffffff;
+      --line: #d7e0de;
+      --teal: #0e7490;
+      --coral: #d9574b;
+      --ochre: #be7b18;
+      --soft-teal: #e6f3f5;
+      --soft-coral: #fbebe8;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: "Libre Franklin", sans-serif; color: var(--ink); }
+    button, input { font: inherit; }
+    button:focus-visible, input:focus-visible { outline: 3px solid #78b7c3; outline-offset: 3px; }
+    .math-font { font-family: "Source Serif 4", serif; }
+    .app-shell { width: 100%; min-height: 100%; }
+    .paper-panel { border: 1px solid var(--line); box-shadow: 0 10px 28px rgba(21, 52, 59, .06); }
+    .mode-button { border: 1px solid #bed0d2; transition: .2s ease; }
+    .mode-button.active { background: var(--ink); color: white; border-color: var(--ink); }
+    .mode-button:not(.active):hover { background: #edf3f2; }
+    .quick-button { border: 1px solid #c8d6d5; background: #fff; transition: .2s ease; }
+    .quick-button:hover { border-color: var(--teal); color: var(--teal); background: #f1f8f8; }
+    .control-button { transition: transform .15s ease, box-shadow .15s ease; }
+    .control-button:hover { transform: translateY(-1px); box-shadow: 0 6px 13px rgba(24,49,58,.13); }
+    .control-button:disabled { cursor: not-allowed; opacity: .48; transform: none; box-shadow: none; }
+    .coordinate-stage { touch-action: none; user-select: none; }
+    .coordinate-stage svg { display: block; width: 100%; height: auto; }
+    .grid-line { stroke: #dce7e5; stroke-width: .025; }
+    .axis { stroke: #3b5259; stroke-width: .06; }
+    .axis-tick { stroke: #61747a; stroke-width: .045; }
+    .axis-text { fill: #607078; font-size: .34px; font-family: "Libre Franklin", sans-serif; }
+    .axis-label { fill: #18313a; font-size: .48px; font-weight: 700; font-family: "Libre Franklin", sans-serif; }
+    .geom-label { font-size: .39px; font-weight: 700; font-family: "Libre Franklin", sans-serif; paint-order: stroke; stroke: #ffffff; stroke-width: .12px; stroke-linejoin: round; }
+    .small-geom-label { font-size: .30px; font-family: "Libre Franklin", sans-serif; paint-order: stroke; stroke: #ffffff; stroke-width: .10px; }
+    .point-m { fill: #0e7490; stroke: white; stroke-width: .12; cursor: grab; }
+    .point-m:active { cursor: grabbing; }
+    .point-prime { fill: #d9574b; stroke: white; stroke-width: .12; }
+    .point-o { fill: #be7b18; stroke: white; stroke-width: .1; }
+    .selected-option { border-color: var(--teal) !important; background: var(--soft-teal) !important; color: #0f5669 !important; }
+    .feedback-good { color: #13755b; }
+    .feedback-bad { color: #b4453c; }
+    input[type="range"] { accent-color: var(--teal); }
+    .slide-disabled { opacity: .45; }
+    @media (max-width: 640px) {
+      .axis-text { font-size: .42px; }
+      .geom-label { font-size: .48px; }
+      .small-geom-label { font-size: .38px; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/efe904fe8a212716.data_sdk.js" type="text/javascript" integrity="sha512-oiO0pmn5llS1uDeB2l690YywxqOe/a0U1kzY6RGaLZXtyh9YjTk1CUoK/bJUugc1QbUaJMJ3IE1MtpNY5NBZCw=="></script>
+  <script src="/_sdk/6125e8aa3c264a2d.resizing_sdk.js" type="text/javascript" integrity="sha512-+j9iK2FF/yFSTU389rFqKj3v0s1ELh1r0aj3mqpsVRZujaeWi0WgN7jmTcWLcBq91dz3NCEyXqMtHbwpOxhDYg=="></script>
+ </head>
+ <body data-template-id="__page-root" class="w-full" style="background: rgb(244, 246, 244);">
+  <div class="app-shell px-4 py-5 sm:px-7 sm:py-8 lg:px-10">
+   <header data-template-id="header-section" class="canva-header mx-auto max-w-7xl border-b pb-6" style="border-color: rgb(203, 216, 214); background: rgb(244, 246, 244);">
+    <p data-template-id="header-kicker" class="canva-text mb-3 text-xs font-bold tracking-[0.18em]" style="color: rgb(14, 116, 144); font-weight: 700; font-style: normal; font-size: 12px; letter-spacing: 0.12rem;">TOÁN 11 · HÌNH HỌC BIẾN HÌNH</p>
+    <h1 data-template-id="page-title" class="canva-text math-font max-w-4xl font-bold leading-tight" style="color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 32px; letter-spacing: -0.03rem;">PHÒNG THÍ NGHIỆM PHÉP BIẾN HÌNH</h1>
+    <p data-template-id="page-instruction" class="canva-text mt-3 max-w-3xl leading-relaxed" style="color: rgb(80, 100, 107); font-weight: 400; font-style: normal; font-size: 18px; line-height: 1.5;">Kéo điểm M, thay đổi góc quay và quan sát điểm ảnh M′.</p>
+   </header>
+   <main class="mx-auto mt-6 max-w-7xl">
+    <section class="grid gap-6 lg:grid-cols-[minmax(0,1.55fr)_minmax(320px,.85fr)]">
+     <section data-template-id="geometry-panel" class="canva-panel paper-panel overflow-hidden rounded-2xl" style="background: rgb(255, 255, 255);">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3 sm:px-5" style="border-color:#d7e0de;">
+       <div>
+        <h2 data-template-id="plane-heading" class="canva-text text-sm font-bold tracking-[0.12em]" style="color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 14px; letter-spacing: 0.08rem;">MẶT PHẲNG TỌA ĐỘ Oxy</h2>
+        <p data-template-id="plane-helper" class="canva-text mt-1 text-xs" style="color: rgb(100, 114, 122); font-weight: 400; font-style: normal; font-size: 12px;">Kéo trực tiếp điểm M trên mặt phẳng.</p>
+       </div>
+       <div id="modeBadge" class="rounded-full px-3 py-1 text-xs font-bold tracking-wide" style="background:#e6f3f5;color:#0e6075;">
+        PHÉP QUAY
+       </div>
+      </div>
+      <div class="coordinate-stage bg-white p-2 sm:p-4">
+       <svg id="coordinateSvg" viewBox="-7 -6.5 14 13" role="img" aria-label="Mặt phẳng tọa độ tương tác với điểm M và điểm ảnh M′"><defs>
+         <marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#3b5259"></path>
+         </marker>
+         <marker id="arrowTeal" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+          <path d="M0,0 L7,3.5 L0,7 Z" fill="#0e7490"></path>
+         </marker>
+        </defs> <g id="gridLayer"></g> <line x1="-6.55" y1="0" x2="6.5" y2="0" class="axis" marker-end="url(#arrow)"></line> <line x1="0" y1="6.05" x2="0" y2="-6.12" class="axis" marker-end="url(#arrow)"></line> <g id="tickLayer"></g> <text x="6.25" y="-0.35" class="axis-label">
+         x
+        </text> <text x=".32" y="-5.85" class="axis-label">
+         y
+        </text> <path id="rotationArc" fill="none" stroke="#be7b18" stroke-width=".07" stroke-linecap="round" marker-end="url(#arrow)"></path> <text id="angleArcLabel" x="0" y="0" class="small-geom-label" fill="#986215"></text> <path id="trajectoryPath" fill="none" stroke="#d9574b" stroke-width=".045" stroke-dasharray=".13 .14" opacity=".72"></path> <line id="segmentM" x1="0" y1="0" x2="3" y2="-2" stroke="#0e7490" stroke-width=".085"></line> <line id="segmentPrime" x1="0" y1="0" x2="0.77" y2="-3.6" stroke="#d9574b" stroke-width=".085"></line> <line id="symmetryLine" x1="0" y1="0" x2="0" y2="0" stroke="#be7b18" stroke-width=".045" stroke-dasharray=".14 .13" opacity="0"></line> <circle cx="0" cy="0" r=".16" class="point-o"></circle> <text x=".22" y=".52" class="geom-label" fill="#966015">
+         O – tâm
+        </text> <circle id="pointPrime" cx="0" cy="0" r=".19" class="point-prime"></circle> <text id="primeLabel" x="0" y="0" class="geom-label" fill="#c43d34"></text> <circle id="pointM" cx="3" cy="-2" r=".20" class="point-m" tabindex="0" role="slider" aria-label="Điểm M có thể kéo trên mặt phẳng tọa độ" aria-valuemin="-6" aria-valuemax="6"></circle> <text id="mLabel" x="0" y="0" class="geom-label" fill="#076078"></text>
+       </svg>
+      </div>
+     </section>
+     <aside class="space-y-5">
+      <section data-template-id="control-panel" class="canva-panel paper-panel rounded-2xl p-4 sm:p-5" style="background: rgb(255, 255, 255);">
+       <h2 data-template-id="control-heading" class="canva-text text-sm font-bold tracking-[0.12em]" style="color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 14px; letter-spacing: 0.08rem;">BẢNG ĐIỀU KHIỂN</h2>
+       <div class="mt-4 grid grid-cols-2 gap-2" role="tablist" aria-label="Chọn phép biến hình"><button id="rotationTab" data-template-id="rotation-tab" class="canva-button mode-button active min-h-12 rounded-lg px-3 py-2 text-sm font-bold" type="button" role="tab" aria-selected="true" style="background: rgb(24, 49, 58); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 13px;">PHÉP QUAY</button> <button id="symmetryTab" data-template-id="symmetry-tab" class="canva-button mode-button min-h-12 rounded-lg px-3 py-2 text-sm font-bold" type="button" role="tab" aria-selected="false" style="background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 13px;">ĐỐI XỨNG TÂM</button>
+       </div>
+       <div id="angleControl" class="mt-5">
+        <div class="flex items-center justify-between gap-3"><label data-template-id="angle-label" class="canva-text text-sm font-bold" for="angleSlider" style="color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 14px;">Góc quay α</label> <output id="angleValue" class="math-font rounded-md px-3 py-1 text-lg font-bold" style="background:#e6f3f5;color:#0b6177;">60°</output>
+        </div><input id="angleSlider" class="mt-3 w-full cursor-pointer" type="range" min="-180" max="180" value="60" step="1" aria-label="Góc quay alpha">
+        <p data-template-id="angle-convention" class="canva-text mt-2 text-xs leading-relaxed" style="color: rgb(100, 114, 122); font-weight: 400; font-style: normal; font-size: 12px; line-height: 1.45;">α &gt; 0: ngược chiều kim đồng hồ · α &lt; 0: theo chiều kim đồng hồ · α = 0: điểm không đổi.</p>
+       </div>
+       <div class="mt-4 grid grid-cols-2 gap-2"><button id="angle90" data-template-id="quick-90" class="canva-button quick-button min-h-10 rounded-lg px-2 text-xs font-bold" type="button" style="background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 12px;">α = 90°</button> <button id="angle180" data-template-id="quick-180" class="canva-button quick-button min-h-10 rounded-lg px-2 text-xs font-bold" type="button" style="background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 12px;">α = 180°</button> <button id="angleMinus90" data-template-id="quick-minus-90" class="canva-button quick-button min-h-10 rounded-lg px-2 text-xs font-bold" type="button" style="background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 12px;">α = −90°</button> <button id="angle0" data-template-id="quick-0" class="canva-button quick-button min-h-10 rounded-lg px-2 text-xs font-bold" type="button" style="background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 12px;">α = 0°</button>
+       </div>
+       <div class="mt-5 grid grid-cols-2 gap-2"><button id="playButton" data-template-id="play-button" class="canva-button control-button min-h-12 rounded-lg px-3 text-sm font-bold" type="button" style="background: rgb(14, 116, 144); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 13px;">▶ QUAY THỬ</button> <button id="stopButton" data-template-id="stop-button" class="canva-button control-button min-h-12 rounded-lg border px-3 text-sm font-bold" style="border-color: rgb(185, 205, 203); background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 13px;" type="button">⏸ DỪNG</button>
+       </div><button id="resetButton" data-template-id="reset-button" class="canva-button control-button mt-2 min-h-11 w-full rounded-lg border px-3 text-sm font-bold" style="border-color: rgb(185, 205, 203); background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 13px;" type="button">↺ ĐẶT LẠI</button>
+      </section>
+      <section data-template-id="mode-info-panel" class="canva-panel paper-panel rounded-2xl p-4 sm:p-5" style="background: rgb(255, 255, 255);">
+       <div id="rotationInfo">
+        <h2 data-template-id="rotation-info-title" class="canva-text text-sm font-bold tracking-[0.12em]" style="color: rgb(14, 116, 144); font-weight: 700; font-style: normal; font-size: 14px; letter-spacing: 0.08rem;">PHÉP QUAY</h2>
+        <div class="math-font mt-3 space-y-1.5 text-sm leading-relaxed">
+         <p data-template-id="rotation-info-map" class="canva-text" style="color: rgb(24, 49, 58); font-weight: 600; font-style: normal; font-size: 16px;">M → M′</p>
+         <p data-template-id="rotation-info-distance" class="canva-text" style="color: rgb(24, 49, 58); font-weight: 600; font-style: normal; font-size: 16px;">OM = OM′</p>
+         <p data-template-id="rotation-info-angle" class="canva-text" style="color: rgb(24, 49, 58); font-weight: 600; font-style: normal; font-size: 16px;">∠(OM, OM′) = α</p>
+        </div>
+        <p data-template-id="rotation-info-note" class="canva-text mt-3 border-l-2 pl-3 text-xs leading-relaxed" style="border-color: rgb(14, 116, 144); color: rgb(80, 100, 107); font-weight: 400; font-style: normal; font-size: 12px; line-height: 1.45;">Phép quay bảo toàn khoảng cách giữa hai điểm bất kỳ.</p>
+       </div>
+       <div id="symmetryInfo" class="hidden">
+        <h2 data-template-id="symmetry-info-title" class="canva-text text-sm font-bold tracking-[0.12em]" style="color: rgb(152, 98, 21); font-weight: 700; font-style: normal; font-size: 14px; letter-spacing: 0.08rem;">ĐỐI XỨNG TÂM O</h2>
+        <p data-template-id="symmetry-info-subtitle" class="canva-text mt-2 text-sm font-semibold" style="color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 15px;">Đối xứng tâm = Phép quay 180°</p>
+        <div class="math-font mt-3 space-y-1.5 text-sm leading-relaxed">
+         <p data-template-id="symmetry-info-line" class="canva-text" style="color: rgb(24, 49, 58); font-weight: 600; font-style: normal; font-size: 16px;">M — O — M′ và OM = OM′</p>
+         <p data-template-id="symmetry-info-midpoint" class="canva-text" style="color: rgb(24, 49, 58); font-weight: 600; font-style: normal; font-size: 16px;">O là trung điểm của MM′.</p>
+        </div>
+        <div class="mt-3 rounded-lg p-3" style="background:#faf3e6;">
+         <p data-template-id="formula-heading" class="canva-text text-xs font-bold tracking-wide" style="color: rgb(152, 98, 21); font-weight: 700; font-style: normal; font-size: 12px; letter-spacing: 0.06rem;">CÔNG THỨC</p>
+         <p data-template-id="formula-general" class="canva-text math-font mt-1 text-sm" style="color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 14px;">Nếu O(a,b) và M(x,y) thì: M′(2a − x, 2b − y)</p>
+         <p data-template-id="formula-origin" class="canva-text math-font mt-1 text-sm" style="color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 14px;">Với O(0,0): M(x,y) → M′(−x,−y)</p>
+        </div>
+       </div>
+      </section>
+     </aside>
+    </section>
+    <section class="mt-6 grid gap-5 lg:grid-cols-[.78fr_1.22fr]">
+     <section data-template-id="coordinate-panel" class="canva-panel paper-panel rounded-2xl p-4 sm:p-5" style="background: rgb(255, 255, 255);">
+      <h2 data-template-id="coordinate-heading" class="canva-text text-sm font-bold tracking-[0.12em]" style="color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 14px; letter-spacing: 0.08rem;">TỌA ĐỘ &amp; KHOẢNG CÁCH</h2>
+      <table class="mt-3 w-full border-collapse text-left text-sm" aria-label="Bảng tọa độ các điểm">
+       <thead>
+        <tr class="border-b" style="border-color:#d7e0de;">
+         <th data-template-id="table-point-header" class="canva-text py-2 font-bold" style="color: rgb(80, 100, 107); font-weight: 700; font-style: normal; font-size: 12px;">ĐIỂM</th>
+         <th data-template-id="table-coordinate-header" class="canva-text py-2 font-bold" style="color: rgb(80, 100, 107); font-weight: 700; font-style: normal; font-size: 12px;">TỌA ĐỘ</th>
+        </tr>
+       </thead>
+       <tbody class="math-font">
+        <tr class="border-b" style="border-color:#edf1f0;">
+         <td class="py-2 font-bold" style="color:#a36a17;">O</td>
+         <td id="coordO" class="py-2">(0, 0)</td>
+        </tr>
+        <tr class="border-b" style="border-color:#edf1f0;">
+         <td class="py-2 font-bold" style="color:#0e7490;">M</td>
+         <td id="coordM" class="py-2">(3, 2)</td>
+        </tr>
+        <tr>
+         <td class="py-2 font-bold" style="color:#d9574b;">M′</td>
+         <td id="coordPrime" class="py-2">(−0.23, 3.60)</td>
+        </tr>
+       </tbody>
+      </table>
+      <div class="mt-4 rounded-xl p-3" style="background:#f1f7f6;">
+       <div class="flex justify-between gap-4 text-sm">
+        <span data-template-id="om-label" class="canva-text font-semibold" style="color: rgb(24, 49, 58); font-weight: 600; font-style: normal; font-size: 14px;">OM =</span><strong id="distanceM" class="math-font">3.61</strong>
+       </div>
+       <div class="mt-1 flex justify-between gap-4 text-sm">
+        <span data-template-id="omp-label" class="canva-text font-semibold" style="color: rgb(24, 49, 58); font-weight: 600; font-style: normal; font-size: 14px;">OM′ =</span><strong id="distancePrime" class="math-font">3.61</strong>
+       </div>
+       <p id="distanceStatus" class="mt-2 text-xs font-bold" style="color:#13755b;" aria-live="polite">Khoảng cách được bảo toàn ✓</p>
+      </div>
+     </section>
+     <section data-template-id="explanation-panel" class="canva-panel paper-panel rounded-2xl p-4 sm:p-5" style="background: rgb(255, 255, 255);">
+      <h2 data-template-id="explanation-heading" class="canva-text text-sm font-bold tracking-[0.12em]" style="color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 14px; letter-spacing: 0.08rem;">GIẢI THÍCH TỰ ĐỘNG</h2>
+      <p id="autoExplanation" class="mt-3 border-l-4 pl-4 text-base leading-relaxed" style="border-color:#0e7490;" aria-live="polite"></p>
+     </section>
+    </section>
+    <section data-template-id="challenge-panel" class="canva-panel paper-panel mt-6 rounded-2xl p-4 sm:p-5" style="background: rgb(255, 255, 255);">
+     <h2 data-template-id="challenge-heading" class="canva-text text-sm font-bold tracking-[0.12em]" style="color: rgb(24, 49, 58); font-weight: 700; font-style: normal; font-size: 14px; letter-spacing: 0.1rem;">THỬ THÁCH</h2>
+     <div class="mt-4 grid gap-5 lg:grid-cols-2">
+      <fieldset class="rounded-xl border p-4" style="border-color:#d7e0de;"><legend data-template-id="challenge-one-question" class="canva-text px-1 text-sm font-semibold leading-relaxed" style="color: rgb(24, 49, 58); font-weight: 600; font-style: normal; font-size: 14px; line-height: 1.45;">Hiện tại α = 90°. Nếu M đang ở bên phải O, M′ sẽ nằm ở đâu?</legend>
+       <div class="mt-3 grid gap-2"><button data-template-id="challenge-one-a" class="canva-button challenge-one-option rounded-lg border px-3 py-3 text-left text-sm" style="border-color: rgb(215, 224, 222); background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 14px;" type="button" data-answer="A">A. Phía trên O</button> <button data-template-id="challenge-one-b" class="canva-button challenge-one-option rounded-lg border px-3 py-3 text-left text-sm" style="border-color: rgb(215, 224, 222); background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 14px;" type="button" data-answer="B">B. Phía dưới O</button> <button data-template-id="challenge-one-c" class="canva-button challenge-one-option rounded-lg border px-3 py-3 text-left text-sm" style="border-color: rgb(215, 224, 222); background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 14px;" type="button" data-answer="C">C. Bên trái O</button> <button data-template-id="challenge-one-d" class="canva-button challenge-one-option rounded-lg border px-3 py-3 text-left text-sm" style="border-color: rgb(215, 224, 222); background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 14px;" type="button" data-answer="D">D. Không thay đổi</button>
+       </div>
+       <p id="challengeOneFeedback" class="mt-3 text-sm font-bold" aria-live="polite"></p>
+      </fieldset>
+      <fieldset class="rounded-xl border p-4" style="border-color:#d7e0de;"><legend data-template-id="challenge-two-question" class="canva-text px-1 text-sm font-semibold leading-relaxed" style="color: rgb(24, 49, 58); font-weight: 600; font-style: normal; font-size: 14px; line-height: 1.45;">Khi α = 180°, điều gì xảy ra?</legend>
+       <div class="mt-3 grid gap-2"><button data-template-id="challenge-two-a" class="canva-button challenge-two-option rounded-lg border px-3 py-3 text-left text-sm" style="border-color: rgb(215, 224, 222); background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 14px;" type="button" data-answer="A">A. M′ trùng với M.</button> <button data-template-id="challenge-two-b" class="canva-button challenge-two-option rounded-lg border px-3 py-3 text-left text-sm" style="border-color: rgb(215, 224, 222); background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 14px;" type="button" data-answer="B">B. O là trung điểm của MM′.</button> <button data-template-id="challenge-two-c" class="canva-button challenge-two-option rounded-lg border px-3 py-3 text-left text-sm" style="border-color: rgb(215, 224, 222); background: rgb(255, 255, 255); color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 14px;" type="button" data-answer="C">C. Khoảng cách OM thay đổi.</button>
+       </div>
+       <p id="challengeTwoFeedback" class="mt-3 text-sm font-bold" aria-live="polite"></p>
+      </fieldset>
+     </div>
+    </section>
+    <footer data-template-id="memory-panel" class="canva-footer mt-6 rounded-2xl border-l-8 p-5 sm:p-6" style="border-color: rgb(190, 123, 24); background: rgb(255, 250, 240);">
+     <h2 data-template-id="memory-heading" class="canva-text text-sm font-bold tracking-[0.15em]" style="color: rgb(152, 98, 21); font-weight: 700; font-style: normal; font-size: 14px; letter-spacing: 0.12rem;">GHI NHỚ</h2>
+     <ol class="math-font mt-3 grid gap-2 text-sm leading-relaxed sm:grid-cols-2">
+      <li data-template-id="memory-one" class="canva-text" style="color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 15px;">1. Phép quay: M → M′; OM = OM′; ∠(OM,OM′) = α</li>
+      <li data-template-id="memory-two" class="canva-text" style="color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 15px;">2. Phép quay bảo toàn khoảng cách.</li>
+      <li data-template-id="memory-three" class="canva-text" style="color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 15px;">3. Đối xứng tâm: Đ_O = Q_(O,π)</li>
+      <li data-template-id="memory-four" class="canva-text" style="color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 15px;">4. Đối xứng tâm tương đương với quay 180°.</li>
+      <li data-template-id="memory-five" class="canva-text sm:col-span-2" style="color: rgb(24, 49, 58); font-weight: 400; font-style: normal; font-size: 15px;">5. Với đối xứng tâm, O là trung điểm của MM′.</li>
+     </ol>
+     <div class="mt-4 flex flex-wrap gap-2"><span data-template-id="memory-highlight-one" class="canva-tag rounded-full px-3 py-2 text-xs font-bold" style="background: rgb(230, 243, 245); color: rgb(14, 96, 117); font-weight: 700; font-style: normal; font-size: 12px;">OM = OM′</span> <span data-template-id="memory-highlight-two" class="canva-tag rounded-full px-3 py-2 text-xs font-bold" style="background: rgb(250, 243, 230); color: rgb(152, 98, 21); font-weight: 700; font-style: normal; font-size: 12px;">O là trung điểm của MM′</span> <span data-template-id="memory-highlight-three" class="canva-tag rounded-full px-3 py-2 text-xs font-bold" style="background: rgb(251, 235, 232); color: rgb(180, 69, 60); font-weight: 700; font-style: normal; font-size: 12px;">Đối xứng tâm = phép quay 180°</span>
+     </div>
+    </footer>
+   </main>
+  </div>
+  <script src="/_sdk/6f16dc4ffc0cf3fe.editing_sdk.js" integrity="sha512-XcGkt+MVg9QK/rlrq9umdkP9LzshVjIu+vaITjWOSFti+dqk5aHBHkCCQ/IXnnUyJtw0F+lYzvT7m4EfPrBrjg=="></script>
+  <script>
+    const state = {
+      x: 3,
+      y: 2,
+      angle: 60,
+      mode: "rotation",
+      displayAngle: 60,
+      animating: false,
+      animationId: null,
+      dragActive: false
+    };
+
+    const svg = document.getElementById("coordinateSvg");
+    const pointM = document.getElementById("pointM");
+    const pointPrime = document.getElementById("pointPrime");
+    const segmentM = document.getElementById("segmentM");
+    const segmentPrime = document.getElementById("segmentPrime");
+    const symmetryLine = document.getElementById("symmetryLine");
+    const rotationArc = document.getElementById("rotationArc");
+    const trajectoryPath = document.getElementById("trajectoryPath");
+    const mLabel = document.getElementById("mLabel");
+    const primeLabel = document.getElementById("primeLabel");
+    const angleArcLabel = document.getElementById("angleArcLabel");
+    const angleSlider = document.getElementById("angleSlider");
+    const angleValue = document.getElementById("angleValue");
+    const rotationTab = document.getElementById("rotationTab");
+    const symmetryTab = document.getElementById("symmetryTab");
+    const rotationInfo = document.getElementById("rotationInfo");
+    const symmetryInfo = document.getElementById("symmetryInfo");
+    const modeBadge = document.getElementById("modeBadge");
+
+    function cleanNumber(value) {
+      const rounded = Math.round(value * 100) / 100;
+      return Math.abs(rounded) < 0.005 ? 0 : rounded;
+    }
+
+    function formatNumber(value) {
+      const n = cleanNumber(value);
+      return String(n).replace("-", "−");
+    }
+
+    function polarPoint(radius, angleDeg) {
+      const rad = angleDeg * Math.PI / 180;
+      return { x: radius * Math.cos(rad), y: -radius * Math.sin(rad) };
+    }
+
+    function rotatedPoint(angleDeg) {
+      const rad = angleDeg * Math.PI / 180;
+      return {
+        x: state.x * Math.cos(rad) - state.y * Math.sin(rad),
+        y: state.x * Math.sin(rad) + state.y * Math.cos(rad)
+      };
+    }
+
+    function pathArc(angleDeg) {
+      if (Math.abs(angleDeg) < 1) return "";
+      const radius = 1.15;
+      // Start from the actual direction of OM, not the positive x-axis.
+      const initialAngle = Math.atan2(state.y, state.x) * 180 / Math.PI;
+      const start = polarPoint(radius, initialAngle);
+      const end = polarPoint(radius, initialAngle + angleDeg);
+      const largeArc = Math.abs(angleDeg) > 180 ? 1 : 0;
+      // SVG's y-axis points down, so positive mathematical angles use sweep=0.
+      const sweep = angleDeg > 0 ? 0 : 1;
+      return `M ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArc} ${sweep} ${end.x} ${end.y}`;
+    }
+
+    function trajectoryArc(angleDeg) {
+      if (Math.abs(angleDeg) < 1) return "";
+      const radius = Math.hypot(state.x, state.y);
+      const initial = Math.atan2(state.y, state.x) * 180 / Math.PI;
+      const start = polarPoint(radius, initial);
+      const end = polarPoint(radius, initial + angleDeg);
+      const sweep = angleDeg > 0 ? 0 : 1;
+      return `M ${start.x} ${start.y} A ${radius} ${radius} 0 ${Math.abs(angleDeg) > 180 ? 1 : 0} ${sweep} ${end.x} ${end.y}`;
+    }
+
+    function render() {
+      const p = rotatedPoint(state.displayAngle);
+      const finalP = rotatedPoint(state.angle);
+      const distanceM = Math.hypot(state.x, state.y);
+      const distanceP = Math.hypot(finalP.x, finalP.y);
+      const displayDistanceP = Math.hypot(p.x, p.y);
+
+      pointM.setAttribute("cx", state.x);
+      pointM.setAttribute("cy", -state.y);
+      pointM.setAttribute("aria-valuetext", `M bằng ${formatNumber(state.x)}, ${formatNumber(state.y)}`);
+
+      pointPrime.setAttribute("cx", p.x);
+      pointPrime.setAttribute("cy", -p.y);
+      segmentM.setAttribute("x2", state.x);
+      segmentM.setAttribute("y2", -state.y);
+      segmentPrime.setAttribute("x2", p.x);
+      segmentPrime.setAttribute("y2", -p.y);
+
+      mLabel.setAttribute("x", state.x + .24);
+      mLabel.setAttribute("y", -state.y - .28);
+      mLabel.textContent = `M(${formatNumber(state.x)}; ${formatNumber(state.y)})`;
+
+      primeLabel.setAttribute("x", p.x + .24);
+      primeLabel.setAttribute("y", -p.y - .28);
+      primeLabel.textContent = `M′(${formatNumber(p.x)}; ${formatNumber(p.y)})`;
+
+      const arcAngle = state.animating ? state.displayAngle : state.angle;
+      rotationArc.setAttribute("d", pathArc(arcAngle));
+      // Keep the angle label centered on the arc as OM changes direction.
+      const initialAngle = Math.atan2(state.y, state.x) * 180 / Math.PI;
+      const labelPoint = polarPoint(1.55, initialAngle + arcAngle / 2);
+      angleArcLabel.setAttribute("x", labelPoint.x);
+      angleArcLabel.setAttribute("y", labelPoint.y);
+      angleArcLabel.textContent = Math.abs(arcAngle) < 1 ? "" : `α = ${Math.round(arcAngle)}°`;
+
+      trajectoryPath.setAttribute("d", state.animating ? trajectoryArc(state.angle) : "");
+      symmetryLine.setAttribute("opacity", state.mode === "symmetry" ? "1" : "0");
+      if (state.mode === "symmetry") {
+        symmetryLine.setAttribute("x1", state.x);
+        symmetryLine.setAttribute("y1", -state.y);
+        symmetryLine.setAttribute("x2", finalP.x);
+        symmetryLine.setAttribute("y2", -finalP.y);
+      }
+
+      angleValue.textContent = `${state.angle}°`;
+      angleSlider.value = state.angle;
+      document.getElementById("coordM").textContent = `(${formatNumber(state.x)}, ${formatNumber(state.y)})`;
+      document.getElementById("coordPrime").textContent = `(${formatNumber(finalP.x)}, ${formatNumber(finalP.y)})`;
+      document.getElementById("distanceM").textContent = distanceM.toFixed(2);
+      document.getElementById("distancePrime").textContent = distanceP.toFixed(2);
+
+      const preserved = Math.abs(distanceM - distanceP) < 0.000001;
+      document.getElementById("distanceStatus").textContent = preserved ? "Khoảng cách được bảo toàn ✓" : "Đang kiểm tra khoảng cách";
+      document.getElementById("distanceStatus").style.color = preserved ? "#13755b" : "#b4453c";
+
+      updateExplanation();
+      document.getElementById("playButton").disabled = state.animating;
+      document.getElementById("stopButton").disabled = !state.animating;
+    }
+
+    function updateExplanation() {
+      const target = document.getElementById("autoExplanation");
+      let text = "";
+      if (state.angle === 90) {
+        text = "Điểm M được quay quanh O một góc 90° theo chiều ngược kim đồng hồ. Khoảng cách OM được giữ nguyên.";
+      } else if (state.angle === -90) {
+        text = "Góc âm cho biết điểm được quay theo chiều kim đồng hồ. Khoảng cách từ M′ đến O vẫn bằng OM.";
+      } else if (state.angle === 180) {
+        text = "Sau khi quay 180°, M và M′ nằm đối nhau qua O. Vì OM = OM′ nên O là trung điểm của MM′.";
+      } else if (state.angle === 0) {
+        text = "Điểm M không thay đổi vì góc quay bằng 0°.";
+      } else {
+        const direction = state.angle > 0 ? "ngược chiều kim đồng hồ" : "theo chiều kim đồng hồ";
+        text = `Điểm M được quay quanh O một góc ${Math.abs(state.angle)}° ${direction}. Phép quay bảo toàn khoảng cách đến tâm O.`;
+      }
+      target.textContent = text;
+    }
+
+    function setMode(mode) {
+      stopAnimation();
+      state.mode = mode;
+      if (mode === "symmetry") {
+        state.angle = 180;
+        state.displayAngle = 180;
+        angleSlider.disabled = true;
+        document.getElementById("angleControl").classList.add("slide-disabled");
+        rotationTab.classList.remove("active");
+        symmetryTab.classList.add("active");
+        rotationTab.setAttribute("aria-selected", "false");
+        symmetryTab.setAttribute("aria-selected", "true");
+        rotationInfo.classList.add("hidden");
+        symmetryInfo.classList.remove("hidden");
+        modeBadge.textContent = "ĐỐI XỨNG TÂM O";
+        modeBadge.style.background = "#faf3e6";
+        modeBadge.style.color = "#986215";
+      } else {
+        angleSlider.disabled = false;
+        document.getElementById("angleControl").classList.remove("slide-disabled");
+        rotationTab.classList.add("active");
+        symmetryTab.classList.remove("active");
+        rotationTab.setAttribute("aria-selected", "true");
+        symmetryTab.setAttribute("aria-selected", "false");
+        rotationInfo.classList.remove("hidden");
+        symmetryInfo.classList.add("hidden");
+        modeBadge.textContent = "PHÉP QUAY";
+        modeBadge.style.background = "#e6f3f5";
+        modeBadge.style.color = "#0e6075";
+      }
+      render();
+    }
+
+    function setAngle(angle) {
+      if (state.mode === "symmetry") return;
+      stopAnimation();
+      state.angle = Number(angle);
+      state.displayAngle = state.angle;
+      render();
+    }
+
+    function stopAnimation() {
+      if (state.animationId) cancelAnimationFrame(state.animationId);
+      state.animationId = null;
+      state.animating = false;
+      state.displayAngle = state.angle;
+    }
+
+    function playAnimation() {
+      stopAnimation();
+      const targetAngle = state.angle;
+      state.animating = true;
+      state.displayAngle = 0;
+      const startedAt = performance.now();
+      const duration = 1500 + Math.min(900, Math.abs(targetAngle) * 3);
+
+      function animate(now) {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const eased = progress < .5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        state.displayAngle = targetAngle * eased;
+        render();
+        if (progress < 1 && state.animating) {
+          state.animationId = requestAnimationFrame(animate);
+        } else {
+          state.animating = false;
+          state.animationId = null;
+          state.displayAngle = targetAngle;
+          render();
+        }
+      }
+      state.animationId = requestAnimationFrame(animate);
+      render();
+    }
+
+    function clientToCoordinates(event) {
+      const point = svg.createSVGPoint();
+      point.x = event.clientX;
+      point.y = event.clientY;
+      const transformed = point.matrixTransform(svg.getScreenCTM().inverse());
+      return {
+        x: Math.max(-5.8, Math.min(5.8, transformed.x)),
+        y: Math.max(-5.35, Math.min(5.35, -transformed.y))
+      };
+    }
+
+    function movePoint(event) {
+      const coords = clientToCoordinates(event);
+      state.x = cleanNumber(coords.x);
+      state.y = cleanNumber(coords.y);
+      state.displayAngle = state.angle;
+      render();
+    }
+
+    pointM.addEventListener("pointerdown", event => {
+      event.preventDefault();
+      stopAnimation();
+      state.dragActive = true;
+      pointM.setPointerCapture(event.pointerId);
+      movePoint(event);
+    });
+
+    pointM.addEventListener("pointermove", event => {
+      if (state.dragActive) movePoint(event);
+    });
+
+    pointM.addEventListener("pointerup", event => {
+      state.dragActive = false;
+      if (pointM.hasPointerCapture(event.pointerId)) pointM.releasePointerCapture(event.pointerId);
+    });
+
+    pointM.addEventListener("keydown", event => {
+      const step = event.shiftKey ? 1 : .2;
+      let changed = true;
+      if (event.key === "ArrowRight") state.x = Math.min(5.8, state.x + step);
+      else if (event.key === "ArrowLeft") state.x = Math.max(-5.8, state.x - step);
+      else if (event.key === "ArrowUp") state.y = Math.min(5.35, state.y + step);
+      else if (event.key === "ArrowDown") state.y = Math.max(-5.35, state.y - step);
+      else changed = false;
+      if (changed) {
+        event.preventDefault();
+        stopAnimation();
+        render();
+      }
+    });
+
+    angleSlider.addEventListener("input", event => setAngle(event.target.value));
+    rotationTab.addEventListener("click", () => setMode("rotation"));
+    symmetryTab.addEventListener("click", () => setMode("symmetry"));
+    document.getElementById("angle90").addEventListener("click", () => setAngle(90));
+    document.getElementById("angle180").addEventListener("click", () => setAngle(180));
+    document.getElementById("angleMinus90").addEventListener("click", () => setAngle(-90));
+    document.getElementById("angle0").addEventListener("click", () => setAngle(0));
+    document.getElementById("playButton").addEventListener("click", playAnimation);
+    document.getElementById("stopButton").addEventListener("click", () => {
+      if (state.animationId) cancelAnimationFrame(state.animationId);
+      state.animationId = null;
+      state.animating = false;
+      render();
+    });
+    document.getElementById("resetButton").addEventListener("click", () => {
+      stopAnimation();
+      state.x = 3;
+      state.y = 2;
+      state.angle = 60;
+      state.displayAngle = 60;
+      setMode("rotation");
+      render();
+    });
+
+    function answerChallenge(selector, feedbackId, correctAnswer) {
+      document.querySelectorAll(selector).forEach(button => {
+        button.addEventListener("click", () => {
+          const isCorrect = button.dataset.answer === correctAnswer;
+          document.querySelectorAll(selector).forEach(item => item.classList.remove("selected-option"));
+          button.classList.add("selected-option");
+          const feedback = document.getElementById(feedbackId);
+          feedback.className = `mt-3 text-sm font-bold ${isCorrect ? "feedback-good" : "feedback-bad"}`;
+          feedback.textContent = isCorrect ? "✓ Chính xác!" : "Chưa đúng. Hãy quan sát chiều quay.";
+        });
+      });
+    }
+
+    answerChallenge(".challenge-one-option", "challengeOneFeedback", "A");
+    answerChallenge(".challenge-two-option", "challengeTwoFeedback", "B");
+
+    function buildGrid() {
+      const grid = document.getElementById("gridLayer");
+      const ticks = document.getElementById("tickLayer");
+      for (let i = -6; i <= 6; i++) {
+        if (i !== 0) {
+          grid.insertAdjacentHTML("beforeend", `<line x1="${i}" y1="-5.7" x2="${i}" y2="5.7" class="grid-line"></line><line x1="-6.2" y1="${i}" x2="6.2" y2="${i}" class="grid-line"></line>`);
+          ticks.insertAdjacentHTML("beforeend", `<line x1="${i}" y1="-.11" x2="${i}" y2=".11" class="axis-tick"></line><text x="${i - .10}" y=".48" class="axis-text">${i}</text><line x1="-.11" y1="${-i}" x2=".11" y2="${-i}" class="axis-tick"></line><text x=".23" y="${-i + .12}" class="axis-text">${i}</text>`);
+        }
+      }
+    }
+
+    buildGrid();
+    render();
+  </script>
+ 
+</body></html>
